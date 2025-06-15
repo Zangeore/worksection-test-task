@@ -20,6 +20,6 @@ class MigrateUpCommand implements CommandInterface
 
     public function run()
     {
-        $this->diContainer->get(MigrationRunner::class)->rollback();
+        $this->diContainer->get(MigrationRunner::class)->up();
     }
 }

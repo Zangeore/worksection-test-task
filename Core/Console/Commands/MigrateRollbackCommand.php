@@ -20,6 +20,6 @@ class MigrateRollbackCommand implements CommandInterface
 
     public function run()
     {
-        $this->diContainer->get(MigrationRunner::class)->run();
+        $this->diContainer->get(MigrationRunner::class)->rollback();
     }
 }

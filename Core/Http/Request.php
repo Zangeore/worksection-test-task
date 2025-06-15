@@ -15,7 +15,26 @@ class Request
 
     public function __construct()
     {
-        $this->body = json_decode(file_get_contents('php://input'), true) ?? $_POST;
+        $this->body = $this->parseInput();
+    }
+
+    protected function parseInput(): array
+    {
+        $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+
+        if (strpos($contentType, 'application/json') === 0) {
+            $raw = file_get_contents('php://input');
+            $json = json_decode($raw, true);
+            return is_array($json) ? $json : [];
+        }
+
+        if (strpos($contentType, 'application/x-www-form-urlencoded') === 0) {
+            $raw = file_get_contents('php://input');
+            parse_str($raw, $data);
+            return is_array($data) ? $data : [];
+        }
+
+        return $_POST;
     }
 
     public function method(): string
@@ -62,6 +81,11 @@ class Request
             return $this->routeParams;
         }
         return $this->routeParams[$key] ?? $default;
+    }
+
+    public function all(): array
+    {
+        return array_merge($this->body, $_GET, $this->routeParams);
     }
 
 }

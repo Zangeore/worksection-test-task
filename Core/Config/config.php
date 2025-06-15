@@ -8,6 +8,7 @@ use Core\Database\Migration\MigrationRunner;
 use Core\Database\PdoDatabase;
 use Core\Exception\ExceptionHandlerResolver;
 use Core\Exception\Handlers\DefaultErrorHandler;
+use Core\Exception\Handlers\ValidationErrorHandler;
 use Core\Http\Render\Php\PhpViewRenderer;
 use Core\Http\Render\RendererInterface;
 use Core\Kernels\ConsoleKernel;
@@ -18,9 +19,11 @@ return [
             'class' => ExceptionHandlerResolver::class,
             'arguments' => [
                 'handlers' => [
+                    new ValidationErrorHandler()
                 ],
                 'fallback' => new DefaultErrorHandler()
             ],
+            'shared' => true,
         ],
         ConsoleKernel::class => [
             'class' => ConsoleKernel::class,

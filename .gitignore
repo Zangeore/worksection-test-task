@@ -3,3 +3,5 @@
 db_data
 vendor
 /App/Config/config-local.php
+/.yarn/
+/node_modules/

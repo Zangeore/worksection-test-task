@@ -6,13 +6,19 @@ class PhpViewContext
 {
     protected $renderer;
     protected $basePath;
+    /**
+     * @var AssetManager
+     */
+    protected $assetManager;
 
     public function __construct(
         PhpViewRenderer $renderer,
-        string $basePath
+        string $basePath,
+        AssetManager $assetManager
     ) {
         $this->basePath = $basePath;
         $this->renderer = $renderer;
+        $this->assetManager = $assetManager;
     }
 
     public function renderPartial(string $view, array $params = []): string

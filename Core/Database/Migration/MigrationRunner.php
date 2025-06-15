@@ -17,13 +17,17 @@ class MigrationRunner
         $this->db = $db;
     }
 
-    public function run(): void
+    public function up(): void
     {
         $this->ensureTable();
 
         $applied = $this->getApplied();
 
         $files = glob($this->basePath . '/*.php');
+        if (empty($files)) {
+            echo "No migration files found in {$this->basePath}.\n";
+            return;
+        }
         sort($files);
 
         foreach ($files as $file) {
@@ -43,6 +47,7 @@ class MigrationRunner
             $migration->up($this->db);
 
             $this->db->execute("INSERT INTO migrations (name) VALUES (?)", [$name]);
+            echo "$name applied successfully.\n";
         }
     }
 

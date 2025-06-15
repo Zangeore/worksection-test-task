@@ -1,0 +1,16 @@
+{
+  "name": "application",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "build": "vite build --config vite.config.js",
+    "watch": "vite build --watch --config vite.config.js"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "vite": "^6.3.5",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  }
+}
