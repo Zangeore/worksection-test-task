@@ -1,0 +1,5 @@
+.env
+.idea
+db_data
+vendor
+/App/Config/config-local.php

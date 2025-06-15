@@ -1,0 +1,22 @@
+{
+    "name": "dl/worksection-test-task",
+    "type": "project",
+    "authors": [
+        {
+            "name": "dl",
+            "email": "pavel.velichenko@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+      "php": ">=7.2",
+      "ext-json": "*",
+      "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core": "Core",
+            "App": "App"
+        }
+    }
+}
