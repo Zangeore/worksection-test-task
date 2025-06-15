@@ -148,6 +148,7 @@ class Task extends HTMLElement {
 
     this.classList.remove('focus');
     this.$focusGroup.hide();
+    this.$input.blur();
   }
 }
 
