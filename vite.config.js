@@ -20,7 +20,6 @@ export default defineConfig({
     },
     emptyOutDir: false,
     outDir: 'public',
-    minify: false,
     cssCodeSplit: true,
   }
 });

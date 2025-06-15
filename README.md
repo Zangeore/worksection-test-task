@@ -61,25 +61,13 @@ AI-інструменти частково використовувались д
    docker compose exec -u www-data application composer install
    ```
 
-5. Встанови frontend-залежності:
-
-   ```bash
-   docker compose exec -u www-data application yarn install
-   ```
-
-6. Збери фронтенд:
-
-   ```bash
-   docker compose exec -u www-data application yarn build
-   ```
-
-7. Запусти міграції:
+5. Запусти міграції:
 
    ```bash
    docker compose exec -u www-data application php public/index.php migrate:up
    ```
 
-8. Відкрий у браузері:
+6. Відкрий у браузері:
 
    ```
    http://localhost
